@@ -1,35 +1,69 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
+import { useState } from 'react';
+
+const gatunki = {
+  1: 'Powieść',
+  2: 'Kryminał',
+  3: 'Fantastyka',
+  4: 'Biografia',
+};
 
 function App() {
-  return (
-    <main className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-lg-8">
-          <div className="card shadow-sm border-0 rounded-4">
-            <div className="card-body p-4 p-md-5">
-              <span className="badge bg-primary-subtle text-primary-emphasis mb-3">
-                SP1 Books
-              </span>
-              <h1 className="display-5 fw-bold mb-3">Witaj w projekcie</h1>
-              <p className="lead text-secondary mb-4">
-                Ten projekt ma już podpięty Bootstrap i gotowy jest do dalszego rozwoju.
-              </p>
+  const [tytul, setTytul] = useState('');
+  const [autor, setAutor] = useState('');
+  const [gatunek, setGatunek] = useState('');
 
-              <div className="d-flex flex-wrap gap-3">
-                <button type="button" className="btn btn-primary btn-lg">
-                  Primary button
-                </button>
-                <button type="button" className="btn btn-outline-secondary btn-lg">
-                  Secondary button
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+  const dodaj = () => {
+    console.log(
+      `tytul: ${tytul}; autor: ${autor}; gatunek: ${gatunki[gatunek] ?? ''}`
+    );
+  };
+
+  return (
+    <form>
+      <div className="tytuldiv">
+        <label htmlFor="Tytul">Tytuł książki</label>
+        <input
+          type="text"
+          className="form-control"
+          id="Tytul"
+          value={tytul}
+          onChange={(e) => setTytul(e.target.value)}
+        />
       </div>
-    </main>
-  )
+
+      <div className="autordiv">
+        <label htmlFor="autorr">Autor książki</label>
+        <input
+          type="text"
+          className="form-control"
+          id="autorr"
+          value={autor}
+          onChange={(e) => setAutor(e.target.value)}
+        />
+      </div>
+
+      <div className="gatunekdiv">
+        <label htmlFor="gatunek">Gatunek</label>
+        <select
+          className="form-control"
+          id="gatunek"
+          value={gatunek}
+          onChange={(e) => setGatunek(e.target.value)}
+        >
+          <option value=""></option>
+          <option value="1">Powieść</option>
+          <option value="2">Kryminał</option>
+          <option value="3">Fantastyka</option>
+          <option value="4">Biografia</option>
+        </select>
+      </div>
+
+      <button type="button" className="btn btn-primary" onClick={dodaj}>
+        Dodaj
+      </button>
+    </form>
+  );
 }
 
-export default App
+export default App;
