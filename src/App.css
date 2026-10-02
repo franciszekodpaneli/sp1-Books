@@ -1,3 +1,17 @@
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #eef2ff 100%);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.9);
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
